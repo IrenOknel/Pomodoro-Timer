@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pomodoro Timer 🍅</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+    <body>
+        <div class="container">
+            <!-- App Title -->
+            <div class="title">Pomodoro <span>Timer 🍅</span></div>
+
+            <!-- Main Timer Section -->
+            <div class="timer">
+                <div class="circle">
+                    <div class="time" id="time-display">25:00</div>
+                </div>
+                <div class="label" id="session-label">FOCUS</div>
+                <button id="start-stop">START</button>
+
+                <!-- Animated Dots -->
+                <div class="dots">
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div class="settings">
+                <div class="setting-header">
+                    <h3>⏱️ Timer Settings</h3>
+                    <p>Adjust durations to suit your workflow.</p>
+                </div>
+
+                <!-- Time Selectors -->
+                <div class="setting-group">
+                    <label for="focus-select">Focus Session:</label>
+                    <select id="focus-select" disabled></select>
+                </div>
+                <div class="setting-group">
+                    <label for="short-select">Short Break:</label>
+                    <select id="short-select" disabled></select>
+                </div>
+                <div class="setting-group">
+                    <label for="long-select">Long Break:</label>
+                    <select id="long-select" disabled></select>
+                </div>
+
+                <!-- Edit/Save Button -->
+                <button id="edit-settings">Edit</button>
+                <span id="save-msg" class="save-msg hidden">✔ Saved!</span>
+            </div>
+        </div>
+
+        <!-- JS logic -->
+        <script src="script.js"></script>
+    </body>
+
+</html>
