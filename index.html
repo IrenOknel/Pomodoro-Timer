@@ -2,26 +2,35 @@
 <html lang="en">
 
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Pomodoro Timer 🍅</title>
-        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Pomodoro Timer</title>
+
+        <!-- Favicon for browser tab -->
+        <link rel="icon" type="image/png" href="tomato-top.png" />
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
         <div class="container">
-            <!-- App Title -->
-            <div class="title">Pomodoro <span>Timer 🍅</span></div>
+            <!-- App Title with Tomato Image -->
+            <div class="title">
+                Pomodoro <span>Timer <img src="tomato-smile-icon.png"
+                        alt="Tomato" class="tomato-icon" />
+                </span>
+            </div>
 
-            <!-- Main Timer Section -->
+            <!-- Session Label -->
+            <div class="label" id="session-label">FOCUS TIME</div>
+
+            <!-- Timer Circle & Controls -->
             <div class="timer">
                 <div class="circle">
                     <div class="time" id="time-display">25:00</div>
                 </div>
-                <div class="label" id="session-label">FOCUS</div>
-                <button id="start-stop">START</button>
-
-                <!-- Animated Dots -->
+                <button id="start-stop" class="liquid-btn">START</button>
                 <div class="dots">
                     <div class="dot"></div>
                     <div class="dot"></div>
@@ -30,34 +39,33 @@
                 </div>
             </div>
 
-            <!-- Settings Section -->
+            <!-- Settings Panel -->
             <div class="settings">
                 <div class="setting-header">
                     <h3>⏱️ Timer Settings</h3>
                     <p>Adjust durations to suit your workflow.</p>
                 </div>
 
-                <!-- Time Selectors -->
                 <div class="setting-group">
-                    <label for="focus-select">Focus Session:</label>
-                    <select id="focus-select" disabled></select>
-                </div>
-                <div class="setting-group">
-                    <label for="short-select">Short Break:</label>
-                    <select id="short-select" disabled></select>
-                </div>
-                <div class="setting-group">
-                    <label for="long-select">Long Break:</label>
-                    <select id="long-select" disabled></select>
+                    <label for="focus-input">Focus Time:</label>
+                    <input type="number" min="1" max="120" id="focus-input"
+                        disabled />
                 </div>
 
-                <!-- Edit/Save Button -->
-                <button id="edit-settings">Edit</button>
+                <div class="setting-group">
+                    <label for="short-input">Break Time:</label>
+                    <input type="number" min="1" max="120" id="short-input"
+                        disabled />
+                </div>
+
+                <div class="edit-btn-wrapper">
+                    <button id="edit-settings" class="liquid-btn">Edit</button>
+                </div>
+
                 <span id="save-msg" class="save-msg hidden">✔ Saved!</span>
             </div>
         </div>
 
-        <!-- JS logic -->
         <script src="script.js"></script>
     </body>
 
