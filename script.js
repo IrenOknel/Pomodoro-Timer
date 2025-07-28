@@ -16,7 +16,7 @@ const focusInput = document.getElementById("focus-input");
 const shortInput = document.getElementById("short-input");
 const editButton = document.getElementById("edit-settings");
 const saveMsg = document.getElementById("save-msg");
-const tomatoIcon = document.querySelector(".tomato-icon"); 
+const tomatoIcon = document.querySelector(".tomato-icon");
 
 function updateDisplay() {
   const minutes = Math.floor(timeLeft / 60);

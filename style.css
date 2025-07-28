@@ -239,3 +239,36 @@ input:disabled {
 .tomato-icon.jump {
   animation: jump 0.6s infinite;
 }
+
+/* Footer */
+.footer {
+  margin-top: 30px;
+  padding-top: 10px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+.footer p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.footer strong {
+  font-weight: 500;
+}
+
+.icon-link img {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+  transition: transform 0.3s ease;
+  filter: brightness(0) invert(1);
+}
+
+.icon-link:hover img {
+  transform: scale(1.15);
+}
