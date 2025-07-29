@@ -272,3 +272,105 @@ input:disabled {
 .icon-link:hover img {
   transform: scale(1.15);
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    max-width: 90%;
+    border-radius: 20px;
+  }
+
+  .title {
+    font-size: 1.5em;
+  }
+
+  .timer {
+    width: 180px;
+    height: 180px;
+  }
+
+  .circle {
+    width: 140px;
+    height: 140px;
+  }
+
+  .time {
+    font-size: 2em;
+  }
+
+  .label {
+    font-size: 0.9em;
+    margin-top: 10px;
+  }
+
+  .settings {
+    padding: 15px;
+  }
+
+  .setting-header h3 {
+    font-size: 1em;
+  }
+
+  .setting-header p {
+    font-size: 0.8em;
+  }
+
+  .setting-group label {
+    font-size: 0.9em;
+  }
+
+  input[type="number"] {
+    width: 50px;
+    font-size: 0.9em;
+  }
+
+  .liquid-btn {
+    font-size: 14px;
+    padding: 8px 20px;
+  }
+
+  .tomato-icon {
+    height: 36px;
+    margin-left: 4px;
+  }
+
+  .footer {
+    font-size: 0.8em;
+    padding-bottom: 10px;
+  }
+
+  .icon-link img {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timer {
+    width: 150px;
+    height: 150px;
+  }
+
+  .circle {
+    width: 120px;
+    height: 120px;
+  }
+
+  .time {
+    font-size: 1.8em;
+  }
+
+  .title {
+    font-size: 1.3em;
+  }
+
+  .label {
+    font-size: 0.85em;
+  }
+
+  .liquid-btn {
+    font-size: 13px;
+    padding: 6px 18px;
+  }
+}
