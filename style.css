@@ -2,7 +2,18 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: radial-gradient(circle at center, #1a1a1a, #000);
+  background: radial-gradient(circle at 50% 40%,
+        #858e96 0%,
+        /* center - steel gray */
+        #81898f 10%,
+        #7a8288 20%,
+        #737b80 30%,
+        #6d7479 45%,
+        #676e73 60%,
+        #636a6f 75%,
+        #60696b 100%
+        /* edge - dark charcoal */
+      );
   color: white;
   display: flex;
   align-items: center;
@@ -11,103 +22,171 @@ body {
 }
 
 .container {
-  background: linear-gradient(145deg, #1c1c1c, #141414);
-  border-radius: 30px;
-  padding: 40px;
   max-width: 400px;
   width: 100%;
   text-align: center;
-  box-shadow: rgba(186, 2, 248, 0.25) 0px 20px 40px,
-    rgba(244, 2, 2, 0.15) 0px -8px 24px, rgba(255, 255, 255, 0.08) 0px 4px 8px,
-    rgba(0, 0, 0, 0.2) 0px 12px 20px, rgba(255, 255, 255, 0.05) 0px -2px 4px;
+  padding: 30px 20px;
 }
 
 .title {
   font-size: 2em;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .title span {
-  color: #ff4d4d;
+  color: #fc6868;
 }
 
-.timer {
-  background: #111;
-  border-radius: 50%;
-  width: 220px;
-  height: 220px;
-  margin: 0 auto 20px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: inset -5px -5px 15px #0f0f0f, inset 5px 5px 15px #1c1c1c;
+.tomato-icon {
+  height: 50px;
+  vertical-align: middle;
+  margin-left: 6px;
 }
 
-.circle {
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: linear-gradient(145deg, #1a1a1a, #0f0f0f);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+@keyframes jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
-.time {
-  font-size: 2.5em;
-  font-weight: bold;
-  color: #ffffff;
+.tomato-icon.jump {
+  animation: jump 0.6s infinite;
 }
 
 .label {
   font-size: 1em;
-  margin-top: 15px;
-  color: #ff4d4d;
+  color: #fc6868;
   letter-spacing: 1px;
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
-.dots {
+.timer-wrapper {
+  position: relative;
+  width: 240px;
+  height: 340px;
+  margin: 0 auto 30px;
+}
+
+.progress-ring {
+  transform: rotate(-90deg);
+  position: absolute;
+  top: 0;
+  left: 0;
+  clip-path: circle(50% at 50% 50%);
+}
+
+.ring-bg,
+.ring-fill {
+  fill: none;
+  stroke-width: 10;
+  r: 110;
+  cx: 120;
+  cy: 120;
+}
+
+.ring-fill {
+  stroke: url(#neonGradient);
+  stroke-linecap: round;
+  stroke-dasharray: 690;
+  stroke-dashoffset: 690;
+  transition: stroke-dashoffset 0.5s ease;
+  filter: drop-shadow(0 0 10px #e94dff) drop-shadow(0 0 4px #4fff3a);
+}
+
+.time-display {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+  text-align: center;
+  z-index: 2;
+}
+
+#time-display {
+  font-size: 2.8em;
+  font-weight: bold;
+  color: white;
+}
+
+.timer-buttons {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
   display: flex;
+  gap: 24px;
+  align-items: center;
   justify-content: center;
-  margin-top: 15px;
 }
 
-.dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #ff4d4d;
-  margin: 0 5px;
-  opacity: 0.5;
+.glass-btn {
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: inset -1px -1px 3px rgba(255, 255, 255, 0.1),
+    inset 2px 2px 6px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(233, 77, 255, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  cursor: pointer;
   transition: transform 0.2s ease;
 }
 
-.dot.active {
-  animation: pulse 1s infinite;
+.glass-btn:hover {
+  transform: scale(1.07);
+}
+
+.glass-btn img {
+  width: 28px;
+  height: 28px;
+  transition: opacity 0.3s ease;
+}
+
+#pause-btn img,
+#reset-btn img {
+  opacity: 0.7;
+}
+
+#start-btn img {
+  filter: brightness(10);
   opacity: 1;
 }
 
-@keyframes pulse {
-  0%,
-  100% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(1.4);
-  }
+.glass-btn.big {
+  width: 80px;
+  height: 80px;
 }
 
-/* Settings */
+.glass-btn.small {
+  width: 55px;
+  height: 55px;
+  padding: 6px 14px;
+}
+
 .settings {
   margin-top: 25px;
-  background: #1c1c1c;
+  background: rgba(50, 50, 50, 0.35);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
   border-radius: 15px;
   padding: 20px;
-  text-align: left;
-  box-shadow: inset -3px -3px 8px #101010, inset 3px 3px 8px #252525;
+  box-shadow:
+    inset -2px -2px 4px rgba(0, 0, 0, 0.35),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.04),
+    0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(200, 200, 200, 0.08);
 }
 
 .setting-header {
@@ -137,7 +216,6 @@ body {
   font-size: 1em;
   font-weight: 600;
   color: #7cad28;
-  margin-right: 10px;
 }
 
 input[type="number"] {
@@ -161,7 +239,6 @@ input:disabled {
   margin-top: 10px;
 }
 
-/* Saved message */
 .save-msg {
   display: inline-block;
   margin-top: 10px;
@@ -180,67 +257,6 @@ input:disabled {
   visibility: visible;
 }
 
-/* Apple Liquid Button */
-.liquid-btn {
-  padding: 10px 30px;
-  border: none;
-  border-radius: 100px;
-  background: rgba(255, 255, 255, 0.05);
-  color: white;
-  font-size: 16px;
-  letter-spacing: 0.5px;
-  position: relative;
-  backdrop-filter: blur(30px) saturate(180%);
-  -webkit-backdrop-filter: blur(30px) saturate(180%);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
-    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
-    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
-    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
-    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-}
-
-.liquid-btn::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: linear-gradient(
-    to bottom right,
-    rgba(255, 255, 255, 0.15),
-    rgba(255, 255, 255, 0.05)
-  );
-  pointer-events: none;
-  mix-blend-mode: overlay;
-  z-index: 1;
-}
-
-.liquid-btn:hover {
-  transform: scale(1.04);
-}
-
-.tomato-icon {
-  height: 50px;
-  vertical-align: middle;
-  margin-left: 6px;
-}
-
-@keyframes jump {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-.tomato-icon.jump {
-  animation: jump 0.6s infinite;
-}
-
-/* Footer */
 .footer {
   margin-top: 30px;
   padding-top: 10px;
@@ -257,10 +273,6 @@ input:disabled {
   flex-wrap: wrap;
 }
 
-.footer strong {
-  font-weight: 500;
-}
-
 .icon-link img {
   width: 22px;
   height: 22px;
@@ -271,106 +283,4 @@ input:disabled {
 
 .icon-link:hover img {
   transform: scale(1.15);
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .container {
-    padding: 20px;
-    max-width: 90%;
-    border-radius: 20px;
-  }
-
-  .title {
-    font-size: 1.5em;
-  }
-
-  .timer {
-    width: 180px;
-    height: 180px;
-  }
-
-  .circle {
-    width: 140px;
-    height: 140px;
-  }
-
-  .time {
-    font-size: 2em;
-  }
-
-  .label {
-    font-size: 0.9em;
-    margin-top: 10px;
-  }
-
-  .settings {
-    padding: 15px;
-  }
-
-  .setting-header h3 {
-    font-size: 1em;
-  }
-
-  .setting-header p {
-    font-size: 0.8em;
-  }
-
-  .setting-group label {
-    font-size: 0.9em;
-  }
-
-  input[type="number"] {
-    width: 50px;
-    font-size: 0.9em;
-  }
-
-  .liquid-btn {
-    font-size: 14px;
-    padding: 8px 20px;
-  }
-
-  .tomato-icon {
-    height: 36px;
-    margin-left: 4px;
-  }
-
-  .footer {
-    font-size: 0.8em;
-    padding-bottom: 10px;
-  }
-
-  .icon-link img {
-    width: 18px;
-    height: 18px;
-  }
-}
-
-@media (max-width: 480px) {
-  .timer {
-    width: 150px;
-    height: 150px;
-  }
-
-  .circle {
-    width: 120px;
-    height: 120px;
-  }
-
-  .time {
-    font-size: 1.8em;
-  }
-
-  .title {
-    font-size: 1.3em;
-  }
-
-  .label {
-    font-size: 0.85em;
-  }
-
-  .liquid-btn {
-    font-size: 13px;
-    padding: 6px 18px;
-  }
 }

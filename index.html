@@ -6,69 +6,74 @@
         <meta name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <title>Pomodoro Timer</title>
-
-        <!-- Favicon for browser tab -->
         <link rel="icon" type="image/png" href="tomato-top.png" />
-
-        <!-- Styles -->
         <link rel="stylesheet" href="style.css" />
     </head>
 
     <body>
         <div class="container">
-            <!-- App Title with Tomato Image -->
             <div class="title">
                 Pomodoro <span>Timer <img src="tomato-smile-icon.png"
                         alt="Tomato" class="tomato-icon" /></span>
             </div>
 
-            <!-- Session Label -->
             <div class="label" id="session-label">FOCUS TIME</div>
 
-            <!-- Timer Circle & Controls -->
-            <div class="timer">
-                <div class="circle">
-                    <div class="time" id="time-display">25:00</div>
+            <!-- Timer -->
+            <div class="timer-wrapper">
+                <svg class="progress-ring" width="240" height="240">
+                    <defs>
+                        <lineargradient id="neonGradient" x1="0%" y1="0%"
+                            x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#ff4d4d" />
+                            <stop offset="100%" stop-color="#4eff75" />
+                        </lineargradient>
+                    </defs>
+                    <circle class="ring-bg" r="110" cx="120" cy="120" />
+                    <circle class="ring-fill" r="110" cx="120" cy="120" />
+                </svg>
+                <div class="time-display">
+                    <div id="time-display">25:00</div>
                 </div>
-                <button id="start-stop" class="liquid-btn">START</button>
-                <div class="dots">
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
-                    <div class="dot"></div>
+                <div class="timer-buttons">
+                    <button id="pause-btn" class="glass-btn small">
+                        <img src="pause.png" alt="Pause" />
+                    </button>
+                    <button id="start-btn" class="glass-btn big">
+                        <img src="start.png" alt="Start" />
+                    </button>
+                    <button id="reset-btn" class="glass-btn small">
+                        <img src="reset.png" alt="Reset" />
+                    </button>
                 </div>
             </div>
 
-            <!-- Settings Panel -->
+            <!-- Settings -->
             <div class="settings">
                 <div class="setting-header">
                     <h3>⏱️ Timer Settings</h3>
                     <p>Adjust durations to suit your workflow.</p>
                 </div>
-
                 <div class="setting-group">
                     <label for="focus-input">Focus Time:</label>
                     <input type="number" min="1" max="120" id="focus-input"
                         disabled />
                 </div>
-
                 <div class="setting-group">
                     <label for="short-input">Break Time:</label>
                     <input type="number" min="1" max="120" id="short-input"
                         disabled />
                 </div>
-
                 <div class="edit-btn-wrapper">
-                    <button id="edit-settings" class="liquid-btn">Edit</button>
+                    <button id="edit-settings"
+                        class="glass-btn small">Edit</button>
                 </div>
-
                 <span id="save-msg" class="save-msg hidden">✔ Saved!</span>
             </div>
 
-            <!-- Footer -->
             <footer class="footer">
                 <p>
-                    Coded by <strong>Iren Fujiharu, CA🍁</strong>
+                    Coded by Iren Fujiharu, CA🍁
                     <a href="https://github.com/IrenOknel" target="_blank"
                         class="icon-link" aria-label="GitHub"
                         rel="noopener noreferrer">
@@ -82,8 +87,6 @@
                 </p>
             </footer>
         </div>
-
-        <!-- Script -->
         <script src="script.js"></script>
     </body>
 
